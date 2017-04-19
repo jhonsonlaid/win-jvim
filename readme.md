@@ -1,7 +1,9 @@
 ## gvim for windows
----
 
-1. [vim下载](http://www.vim.org/download.php#pc)：python的同学，要注意自己是32位的python还是64位的，下载**同样位数**的vim，否则``jedi-vim``等插件不能正常使用。要想使用w0rp-ale插件需要8.0或以上版本。
+1. [vim下载](http://www.vim.org/download.php#pc)：
+ * 要注意自己是32位的python还是64位的，下载**同样位数**的vim，否则``jedi-vim``等插件不能正常使用。
+ * 要想使用w0rp-ale插件需要8.0或以上版本。
+ * 这里为**64位**的gvim。
 
 2. [安装gvim基本教程](http://www.huangdc.com/421)：包括vim下载安装和vundle的安装，和NERDTree的安装。**环境变量**，创建VIM变量，值为
 ```
@@ -20,7 +22,7 @@ E:\ProgramFiles\Vim\
 ```
 4. [vim打开中文文件乱码解决](http://lxs647.iteye.com/blog/1994010)
 
-5. [YouCompleteMe官方教程](https://github.com/Valloric/YouCompleteMe#windows)
+5. [YouCompleteMe官方教程](https://github.com/Valloric/YouCompleteMe#windows)：自动补全插件，强大体积也大，Python可以用``jedi-vim``
 
 6. [w0rp/ale](https://github.com/w0rp/ale)：类似syntastic的异步检测版本，无卡顿, 但只支持8.0以上。按照链接安装完以后没有报错，但不能正常运行的原因可能是没有安装相关语言的语法检查包，比如python要安装**flake8**或者**pylint**，更多依赖包在连接里有相关表格。
 
