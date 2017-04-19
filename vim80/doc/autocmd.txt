@@ -1,4 +1,4 @@
-*autocmd.txt*   For Vim version 8.0.  Last change: 2016 Sep 27
+*autocmd.txt*   For Vim version 8.0.  Last change: 2016 Sep 03
 
 
 		  VIM REFERENCE MANUAL    by Bram Moolenaar
@@ -79,15 +79,11 @@ exception is that "<sfile>" is expanded when the autocmd is defined.  Example:
 
 Here Vim expands <sfile> to the name of the file containing this line.
 
-`:autocmd` adds to the list of autocommands regardless of whether they are
-already present.  When your .vimrc file is sourced twice, the autocommands
-will appear twice.  To avoid this, define your autocommands in a group, so
-that you can easily clear them: >
+When your .vimrc file is sourced twice, the autocommands will appear twice.
+To avoid this, put this command in your .vimrc file, before defining
+autocommands: >
 
-	augroup vimrc
-	  autocmd!	" Remove all vimrc autocommands
-	  au BufNewFile,BufRead *.html so <sfile>:h/html.vim
-	augroup END
+	:autocmd!	" Remove ALL autocommands for the current group.
 
 If you don't want to remove all autocommands, you can instead use a variable
 to ensure that Vim includes the autocommands only once: >
@@ -134,13 +130,8 @@ prompt.  When one command outputs two messages this can happen anyway.
 
 :au[tocmd]! [group] {event}
 			Remove ALL autocommands for {event}.
-			Warning: You should not do this without a group for
-			|BufRead| and other common events, it can break
-			plugins, syntax highlighting, etc.
 
 :au[tocmd]! [group]	Remove ALL autocommands.
-			Warning: You should normally not do this without a
-			group, it breaks plugins, syntax highlighting, etc.
 
 When the [group] argument is not given, Vim uses the current group (as defined
 with ":augroup"); otherwise, Vim uses the group defined with [group].
@@ -992,7 +983,7 @@ WinLeave			Before leaving a window.  If the window to be
 
 							*WinNew*
 WinNew				When a new window was created.  Not done for
-				the first window, when Vim has just started.
+				the fist window, when Vim has just started.
 				Before a WinEnter event.
 
 ==============================================================================

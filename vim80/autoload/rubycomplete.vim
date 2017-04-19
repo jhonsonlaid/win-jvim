@@ -196,7 +196,7 @@ function! rubycomplete#Complete(findstart, base)
             if c =~ '\w'
                 continue
             elseif ! c =~ '\.'
-                let idx = -1
+                idx = -1
                 break
             else
                 break

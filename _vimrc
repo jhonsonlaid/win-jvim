@@ -16,7 +16,7 @@ Plugin 'VundleVim/Vundle.vim'
  Bundle 'altercation/vim-colors-solarized'
  Bundle 'scrooloose/nerdtree'
  Bundle 'w0rp/ale'
-
+ Bundle 'davidhalter/jedi-vim'
 " c) 指定非Github的Git仓库的插件，需要使用git地址  
   
 " d) 指定本地Git仓库中的插件  
@@ -36,10 +36,7 @@ let g:ale_sign_column_always = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
-"set nocompatible
-"filetype off
-"let &runtimepath.=',E:/ProgramFiles/Vim/vimfiles/bundle/ale'
-"filetype plugin on
+
 
 """"""""""""""Solarized""""""""""""""
 " 设置配色方案
@@ -51,11 +48,13 @@ let g:solarized_termtrans=1
 let g:solarized_underline=1
 "let g:solarized_contrast = "normal" 
 set background=dark "背景使用黑色 
-""if has('gui_running')
-""    set background=light
-""else
-""    set background=dark
-""endif
+
+if has('gui_running')
+    set background=dark
+else
+    set background=light
+endif
+
 colorscheme solarized
 
 """"""""""""""NERDTree""""""""""""""
@@ -155,7 +154,7 @@ autocmd FileType c,cpp map <buffer> <leader><space> :w<cr>:make<cr>
 "代码补全 
 set completeopt=preview,menu 
 "允许插件  
-filetype plugin on
+"filetype plugin on
 "共享剪贴板  
 set clipboard+=unnamed 
 "从不备份  
@@ -169,12 +168,12 @@ set cursorline              " 突出显示当前行
 set magic                   " 设置魔术
 set guioptions-=T           " 隐藏工具栏
 set guioptions-=m           " 隐藏菜单栏
-"set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ %{&encoding}\ %c:%l/%L%)\
-" 设置在状态行显示的信息
+
+au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+" 设置保存为unix风格的格式
 set foldcolumn=0
 set foldmethod=indent 
-set foldlevel=3 
-set foldenable              " 开始折叠
+set foldlevel=99
 " 不要使用vi的键盘模式，而是vim自己的
 set nocompatible
 " 语法高亮
@@ -191,8 +190,8 @@ set tabstop=4
 " 统一缩进为4
 set softtabstop=4
 set shiftwidth=4
-" 不要用空格代替制表符
-set noexpandtab
+" 用空格代替制表符
+set expandtab
 " 在行和段开始处使用制表符
 set smarttab
 " 显示行号
@@ -223,11 +222,11 @@ set laststatus=2
 " 命令行（在状态行下）的高度，默认为1，这里是2
 set cmdheight=2
 " 侦测文件类型
-filetype on
+"filetype on
 " 载入文件类型插件
-filetype plugin on
+"filetype plugin on
 " 为特定文件类型载入相关缩进文件
-filetype indent on
+"filetype indent on
 " 保存全局变量
 set viminfo+=!
 " 带有如下符号的单词不要被换行分割

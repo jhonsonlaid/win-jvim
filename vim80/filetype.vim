@@ -1,7 +1,7 @@
 " Vim support file to detect file types
 "
 " Maintainer:	Bram Moolenaar <Bram@vim.org>
-" Last Change:	2016 Oct 31
+" Last Change:	2016 Aug 26
 
 " Listen very carefully, I will say this only once
 if exists("did_load_filetypes")
@@ -676,9 +676,6 @@ au BufNewFile,BufRead *.dts,*.dtsi		setf dts
 " EDIF (*.edf,*.edif,*.edn,*.edo)
 au BufNewFile,BufRead *.ed\(f\|if\|n\|o\)	setf edif
 
-" EditorConfig (close enough to dosini)
-au BufNewFile,BufRead .editorconfig		setf dosini
-
 " Embedix Component Description
 au BufNewFile,BufRead *.ecd			setf ecd
 
@@ -809,10 +806,6 @@ au BufNewFile,BufRead *.gp,.gprc		setf gp
 au BufNewFile,BufRead */.gnupg/options		setf gpg
 au BufNewFile,BufRead */.gnupg/gpg.conf		setf gpg
 au BufNewFile,BufRead */usr/*/gnupg/options.skel setf gpg
-if !empty($GNUPGHOME)
-  au BufNewFile,BufRead $GNUPGHOME/options	setf gpg
-  au BufNewFile,BufRead $GNUPGHOME/gpg.conf	setf gpg
-endif
 
 " gnash(1) configuration files
 au BufNewFile,BufRead gnashrc,.gnashrc,gnashpluginrc,.gnashpluginrc setf gnash
@@ -862,7 +855,7 @@ au BufNewFile,BufRead *.ht			setf haste
 au BufNewFile,BufRead *.htpp			setf hastepreproc
 
 " Hercules
-au BufNewFile,BufRead *.vc,*.ev,*.sum,*.errsum	setf hercules
+au BufNewFile,BufRead *.vc,*.ev,*.rs,*.sum,*.errsum	setf hercules
 
 " HEX (Intel)
 au BufNewFile,BufRead *.hex,*.h32		setf hex
@@ -1760,9 +1753,6 @@ au BufNewFile,BufRead *.rb,*.rbw		setf ruby
 " RubyGems
 au BufNewFile,BufRead *.gemspec			setf ruby
 
-" Rust
-au BufNewFile,BufRead *.rs			setf rust
-
 " Rackup
 au BufNewFile,BufRead *.ru			setf ruby
 
@@ -2257,7 +2247,7 @@ func! s:FTtex()
 endfunc
 
 " ConTeXt
-au BufNewFile,BufRead tex/context/*/*.tex,*.mkii,*.mkiv,*.mkvi   setf context
+au BufNewFile,BufRead tex/context/*/*.tex,*.mkii,*.mkiv   setf context
 
 " Texinfo
 au BufNewFile,BufRead *.texinfo,*.texi,*.txi	setf texinfo
@@ -2670,9 +2660,6 @@ au BufNewFile,BufRead mutt{ng,}rc*,Mutt{ng,}rc*		call s:StarSetf('muttrc')
 
 " Nroff macros
 au BufNewFile,BufRead tmac.*			call s:StarSetf('nroff')
-
-" OpenBSD hostname.if
-au BufNewFile,BufRead /etc/hostname.*		call s:StarSetf('config')
 
 " Pam conf
 au BufNewFile,BufRead */etc/pam.d/*		call s:StarSetf('pamconf')
