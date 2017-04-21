@@ -17,6 +17,7 @@ Plugin 'VundleVim/Vundle.vim'
  Bundle 'scrooloose/nerdtree'
  Bundle 'w0rp/ale'
  Bundle 'davidhalter/jedi-vim'
+ Bundle 'ervandew/supertab'
 " c) 指定非Github的Git仓库的插件，需要使用git地址  
   
 " d) 指定本地Git仓库中的插件  
@@ -31,11 +32,15 @@ filetype plugin indent on     " required!
 "map <C-l> :TlistToggle<CR>
 
 
-"""""""""""""""Ale""""""""""""""
+"""""""""""""""Asynchronous Lint Engine-->Ale""""""""""""""
 let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+nmap <silent> <C-k> <Plug>
+nmap <silent> <C-j> <Plug>
 
 
 """"""""""""""Solarized""""""""""""""
@@ -60,6 +65,8 @@ colorscheme solarized
 """"""""""""""NERDTree""""""""""""""
 autocmd vimenter * NERDTree
 map <C-n> :NERDTreeToggle<CR>
+" if only window left window is nerdtree, close
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " 显示相关  
