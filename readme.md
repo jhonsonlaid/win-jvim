@@ -5,7 +5,7 @@
 ## Install 
  1. Install [Git and Curl](https://github.com/VundleVim/Vundle.vim/wiki/Vundle-for-Windows)
  
- 2. ``git clone`` to local directory. click ``vim80/install.exe``, choose d(do it). Add Path Variable, like
+ 2. ``git clone`` to local directory. click ``vim80/install.exe``, choose d(do it). Add Path Variable``VIM``，value of ``VIM`` is something like
 ```
 E:\ProgramFiles\Vim\
 ```
